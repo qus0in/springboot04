@@ -16,6 +16,14 @@ public class ProductService {
     @Autowired
     private final ProductRepository productRepository;
 
+    public List<Product> findProductsByNameContaining(String name) {
+        return productRepository.findByNameContaining(name);
+    }
+
+    public List<Product> findAllByPriceDesc() {
+        return productRepository.findAllByOrderByPriceDesc();
+    }
+
     // Create
     public void createProduct(Product product) {
         productRepository.save(product); // Repository에는 save! -> create

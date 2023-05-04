@@ -16,6 +16,16 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    @GetMapping("/search")
+    public List<Product> searchProductsByNameContaining(@RequestParam("name") String name) {
+        return productService.findProductsByNameContaining(name);
+    }
+
+    @GetMapping("/sorted-by-price")
+    public List<Product> findAllByPriceDesc() {
+        return productService.findAllByPriceDesc();
+    }
+
     // Create
     @PostMapping // @PostMapping("")
     public void createProduct(@RequestBody Product product) {
